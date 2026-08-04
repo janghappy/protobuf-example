@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package example.order;
+
+option java_package = "com.example.protobuf.order";
+option java_multiple_files = true;
+
+// 필드 이름이 아니라 "필드 번호(= 1, = 2 ...)"가 바이너리에 기록된다.
+message Order {
+  int64 id = 1;
+  string customer_name = 2;
+  OrderStatus status = 3;
+  repeated OrderItem items = 4;   // 리스트
+}
+
+message OrderItem {
+  string product_name = 1;
+  int32 quantity = 2;
+  int64 price = 3;
+}
+
+// proto3 enum은 0번이 기본값이어야 한다. (값을 안 넣으면 0)
+// enum 값 이름은 패키지 전체에서 겹치면 안 되므로 enum 이름을 접두어로 붙인다
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_CREATED = 1;
+  ORDER_STATUS_PAID = 2;
+  ORDER_STATUS_SHIPPED = 3;
+}
