@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package example.user.v1;
+
+option java_package = "com.example.protobuf.user.v1";
+option java_multiple_files = true;
+
+// 스키마 진화 실습(테스트 전용): 같은 User 스키마의 "변경 전" 모습
+// v1/v2는 호환되지 않는 API 버전이 아니라, 한 스키마의 변경 전/후를 동시에 비교하려고 둔 스냅샷이다
+message User {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+}

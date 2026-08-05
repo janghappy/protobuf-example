@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package example.user.v2;
+
+option java_package = "com.example.protobuf.user.v2";
+option java_multiple_files = true;
+
+// 스키마 진화 실습(테스트 전용): 같은 User 스키마의 "변경 후" 모습 (v1과 바이너리 호환)
+message User {
+  int64 id = 1;
+
+  // 이름 변경(name -> display_name): 번호가 같으므로 바이너리 호환
+  string display_name = 2;
+
+  // 필드 삭제(email): 번호를 reserved로 막아 나중에 다른 의미로 재사용하지 못하게 한다
+  reserved 3;
+  reserved "email";
+
+  // 필드 추가: 새 번호를 쓴다
+  string phone = 4;
+}

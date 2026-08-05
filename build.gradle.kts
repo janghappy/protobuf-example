@@ -20,6 +20,7 @@ val protobufVersion = "4.31.1"
 
 dependencies {
     implementation("com.google.protobuf:protobuf-java:$protobufVersion")
+    implementation("com.google.protobuf:protobuf-java-util:$protobufVersion") // JsonFormat (Protobuf <-> JSON)
 
     testImplementation(platform("org.junit:junit-bom:5.12.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
