@@ -1,6 +1,6 @@
 # protobuf-example
 
-Protocol Buffers(Protobuf)의 기본 사용법, 바이너리 구조, JSON 대비 크기, 스키마 진화를 테스트 코드로 확인하는 실습 프로젝트입니다.
+Protocol Buffers(Protobuf)의 기본 사용법, 바이너리 구조, JSON 대비 크기, 스키마 진화, 고급 타입(oneof 등)을 테스트 코드로 확인하는 실습 프로젝트입니다.
 
 ```bash
 ./gradlew test   # .proto → Java 코드 생성 후 테스트 실행 (결과 리포트: build/reports/tests/test/index.html)
@@ -340,11 +340,15 @@ v1이 `name`만 바꿔 다시 보내도 `phone`의 원래 바이트(`22 0d 30 31
 | 삭제한 번호를 다른 의미로 재사용 | **X** | 이전 데이터가 엉뚱한 필드로 읽힘 → `reserved`로 막는 이유 |
 | 타입 변경 (예: `string` → `int64`) | **X** | wire type이 달라 파싱 실패 또는 잘못된 값 |
 
+## step5. 고급 타입
+
+oneof를 주제별 문서로 나눠 다룹니다: [docs/basics/step5-advanced-types.md](docs/basics/step5-advanced-types.md)
+
 ---
 
 ## 정리
 
 - `.proto`가 곧 **API 계약**입니다. 필드 번호는 한 번 정하면 바꾸지 않습니다.
 - 바이너리라 작고 빠르지만 사람이 바로 읽을 수 없으므로, 디버깅할 때는 `toString()`이나 `JsonFormat`을 씁니다.
-- proto3는 "값이 0인 것"과 "값을 안 넣은 것"을 구분하지 못합니다. 구분이 필요하면 `optional` 키워드나 wrapper 타입(`google.protobuf.Int64Value`)을 씁니다.
+- proto3는 "값이 0인 것"과 "값을 안 넣은 것"을 구분하지 못합니다. 구분이 필요하면 `optional` 키워드를 씁니다.
 - 실무에서는 gRPC의 메시지 포맷으로, 또는 Kafka + Schema Registry와 함께 스키마 호환성을 강제하는 형태로 많이 씁니다.

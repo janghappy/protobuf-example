@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package example.order;
+
+option java_package = "com.example.protobuf.order";
+option java_multiple_files = true;
+
+// 주문 상세: 기본 스칼라 타입 외의 타입(oneof)을 모아 둔 메시지
+message OrderDetail {
+  int64 order_id = 1;
+
+  // oneof: 이 중 하나만 설정된다. 다른 필드를 set하면 이전 값은 지워진다
+  oneof payment_method {
+    CardPayment card = 3;
+    BankTransferPayment bank_transfer = 4;
+  }
+}
+
+message CardPayment {
+  string card_number = 1;
+  int32 installment_months = 2;
+}
+
+message BankTransferPayment {
+  string bank_name = 1;
+  string account_number = 2;
+}
