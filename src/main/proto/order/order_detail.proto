@@ -5,7 +5,7 @@ package example.order;
 option java_package = "com.example.protobuf.order";
 option java_multiple_files = true;
 
-// 주문 상세: 기본 스칼라 타입 외의 타입(oneof)을 모아 둔 메시지
+// 주문 상세: 기본 스칼라 타입 외의 타입(oneof, map)을 모아 둔 메시지
 message OrderDetail {
   int64 order_id = 1;
 
@@ -14,6 +14,9 @@ message OrderDetail {
     CardPayment card = 3;
     BankTransferPayment bank_transfer = 4;
   }
+
+  // map: 바이너리에서는 repeated AttributesEntry { key = 1; value = 2; } 로 기록된다
+  map<string, string> attributes = 5;
 }
 
 message CardPayment {

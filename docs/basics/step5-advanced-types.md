@@ -11,9 +11,11 @@ message OrderDetail {
     CardPayment card = 3;
     BankTransferPayment bank_transfer = 4;
   }
+  map<string, string> attributes = 5;              // map
 }
 ```
 
 | 주제 | 문서 | 테스트 |
 |---|---|---|
 | oneof: 여러 필드 중 하나만 | [step5-oneof.md](step5-oneof.md) | `OneofTest` |
+| map: 바이너리에서는 repeated 메시지 | [step5-map.md](step5-map.md) | `MapTest` |
