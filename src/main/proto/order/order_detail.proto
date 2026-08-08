@@ -9,9 +9,12 @@ import "google/protobuf/timestamp.proto";
 option java_package = "com.example.protobuf.order";
 option java_multiple_files = true;
 
-// 주문 상세: 기본 스칼라 타입 외의 타입(oneof, map, Well-Known Types, Any)을 모아 둔 메시지
+// 주문 상세: 기본 스칼라 타입 외의 타입(optional, oneof, map, Well-Known Types, Any)을 모아 둔 메시지
 message OrderDetail {
   int64 order_id = 1;
+
+  // optional: 일반 필드와 달리 값을 넣었는지 따로 기록한다 (hasXxx() 생성)
+  optional int64 coupon_amount = 2;
 
   // oneof: 이 중 하나만 설정된다. 다른 필드를 set하면 이전 값은 지워진다
   oneof payment_method {
