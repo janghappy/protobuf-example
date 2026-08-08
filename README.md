@@ -1,6 +1,6 @@
 # protobuf-example
 
-Protocol Buffers(Protobuf)의 기본 사용법, 바이너리 구조, JSON 대비 크기, 스키마 진화, 고급 타입(oneof, map 등)을 테스트 코드로 확인하는 실습 프로젝트입니다.
+Protocol Buffers(Protobuf)의 기본 사용법, 바이너리 구조, JSON 대비 크기, 스키마 진화, 고급 타입(oneof, map, Any 등)을 테스트 코드로 확인하는 실습 프로젝트입니다.
 
 ```bash
 ./gradlew test   # .proto → Java 코드 생성 후 테스트 실행 (결과 리포트: build/reports/tests/test/index.html)
@@ -342,7 +342,7 @@ v1이 `name`만 바꿔 다시 보내도 `phone`의 원래 바이트(`22 0d 30 31
 
 ## step5. 고급 타입
 
-oneof, map, Well-Known Types(Timestamp, Duration)를 주제별 문서로 나눠 다룹니다: [docs/basics/step5-advanced-types.md](docs/basics/step5-advanced-types.md)
+oneof, map, Well-Known Types(Timestamp, Duration), Any를 주제별 문서로 나눠 다룹니다: [docs/basics/step5-advanced-types.md](docs/basics/step5-advanced-types.md)
 
 ---
 

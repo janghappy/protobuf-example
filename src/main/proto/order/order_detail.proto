@@ -2,13 +2,14 @@ syntax = "proto3";
 
 package example.order;
 
+import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
 option java_package = "com.example.protobuf.order";
 option java_multiple_files = true;
 
-// 주문 상세: 기본 스칼라 타입 외의 타입(oneof, map, Well-Known Types)을 모아 둔 메시지
+// 주문 상세: 기본 스칼라 타입 외의 타입(oneof, map, Well-Known Types, Any)을 모아 둔 메시지
 message OrderDetail {
   int64 order_id = 1;
 
@@ -24,6 +25,9 @@ message OrderDetail {
   // Well-Known Types: 시각과 기간
   google.protobuf.Timestamp ordered_at = 6;
   google.protobuf.Duration delivery_time = 7;
+
+  // Any: 어떤 메시지든 담을 수 있다 (타입 URL + 직렬화된 바이트)
+  google.protobuf.Any extra = 8;
 }
 
 message CardPayment {
@@ -34,4 +38,9 @@ message CardPayment {
 message BankTransferPayment {
   string bank_name = 1;
   string account_number = 2;
+}
+
+// Any에 담아 보낼 부가 정보 예시
+message GiftOption {
+  string message = 1;
 }
