@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package example.order;
 
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
 option java_package = "com.example.protobuf.order";
 option java_multiple_files = true;
 
-// 주문 상세: 기본 스칼라 타입 외의 타입(oneof, map)을 모아 둔 메시지
+// 주문 상세: 기본 스칼라 타입 외의 타입(oneof, map, Well-Known Types)을 모아 둔 메시지
 message OrderDetail {
   int64 order_id = 1;
 
@@ -17,6 +20,10 @@ message OrderDetail {
 
   // map: 바이너리에서는 repeated AttributesEntry { key = 1; value = 2; } 로 기록된다
   map<string, string> attributes = 5;
+
+  // Well-Known Types: 시각과 기간
+  google.protobuf.Timestamp ordered_at = 6;
+  google.protobuf.Duration delivery_time = 7;
 }
 
 message CardPayment {

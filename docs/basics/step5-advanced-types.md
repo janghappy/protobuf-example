@@ -12,6 +12,8 @@ message OrderDetail {
     BankTransferPayment bank_transfer = 4;
   }
   map<string, string> attributes = 5;              // map
+  google.protobuf.Timestamp ordered_at = 6;        // Well-Known Types
+  google.protobuf.Duration delivery_time = 7;
 }
 ```
 
@@ -19,3 +21,4 @@ message OrderDetail {
 |---|---|---|
 | oneof: 여러 필드 중 하나만 | [step5-oneof.md](step5-oneof.md) | `OneofTest` |
 | map: 바이너리에서는 repeated 메시지 | [step5-map.md](step5-map.md) | `MapTest` |
+| Well-Known Types: Timestamp, Duration | [step5-well-known-types.md](step5-well-known-types.md) | `WellKnownTypesTest` |

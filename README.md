@@ -342,7 +342,7 @@ v1이 `name`만 바꿔 다시 보내도 `phone`의 원래 바이트(`22 0d 30 31
 
 ## step5. 고급 타입
 
-oneof, map를 주제별 문서로 나눠 다룹니다: [docs/basics/step5-advanced-types.md](docs/basics/step5-advanced-types.md)
+oneof, map, Well-Known Types(Timestamp, Duration)를 주제별 문서로 나눠 다룹니다: [docs/basics/step5-advanced-types.md](docs/basics/step5-advanced-types.md)
 
 ---
 
