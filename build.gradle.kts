@@ -1,6 +1,7 @@
 plugins {
     java
     id("com.google.protobuf") version "0.9.5"
+    id("me.champeau.jmh") version "0.7.3"
 }
 
 group = "com.example"
@@ -26,6 +27,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.assertj:assertj-core:3.27.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    jmh("com.fasterxml.jackson.core:jackson-databind:2.19.2") // 비교 대상 JSON 라이브러리
 }
 
 // src/main/proto/*.proto -> build/generated/sources/proto/main/java 에 Java 코드 생성
@@ -40,4 +43,13 @@ tasks.test {
     testLogging {
         showStandardStreams = true
     }
+}
+
+// src/jmh/java 의 벤치마크 실행: ./gradlew jmh (결과: build/results/jmh/results.txt)
+jmh {
+    fork = 1
+    warmupIterations = 3
+    warmup = "1s"
+    iterations = 5
+    timeOnIteration = "1s"
 }

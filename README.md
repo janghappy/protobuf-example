@@ -344,6 +344,14 @@ v1이 `name`만 바꿔 다시 보내도 `phone`의 원래 바이트(`22 0d 30 31
 
 optional, oneof, map, Well-Known Types(Timestamp, Duration), Any를 주제별 문서로 나눠 다룹니다: [docs/basics/step5-advanced-types.md](docs/basics/step5-advanced-types.md)
 
+## 성능 비교 (benchmark)
+
+Jackson(JSON), Protobuf 바이너리, `JsonFormat`(Protobuf → JSON)의 직렬화/역직렬화 처리량을 JMH로 측정했습니다. 측정 환경, 결과 표, 해석은 [docs/benchmark/benchmark.md](docs/benchmark/benchmark.md)에 있습니다. (`./gradlew jmh`로 실행)
+
+## 서비스 간 통신과 JSON 변환기
+
+클라이언트-서버와 서버-서버 통신 방식, Jackson과 `JsonFormat`을 언제 쓰는지, 바이너리가 JSON 변환기 없이 객체가 되는 과정을 정리했습니다: [docs/communication/service-communication.md](docs/communication/service-communication.md)
+
 ---
 
 ## 정리
