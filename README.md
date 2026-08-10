@@ -4,6 +4,7 @@ Protocol Buffers(Protobuf)의 기본 사용법, 바이너리 구조, JSON 대비
 
 ```bash
 ./gradlew test   # .proto → Java 코드 생성 후 테스트 실행 (결과 리포트: build/reports/tests/test/index.html)
+./gradlew bootRun   # rest: JSON / Protobuf 둘 다 지원하는 /orders API 실행 (포트 8080)
 ```
 
 ---
@@ -351,6 +352,10 @@ Jackson(JSON), Protobuf 바이너리, `JsonFormat`(Protobuf → JSON)의 직렬�
 ## 서비스 간 통신과 JSON 변환기
 
 클라이언트-서버와 서버-서버 통신 방식, Jackson과 `JsonFormat`을 언제 쓰는지, 바이너리가 JSON 변환기 없이 객체가 되는 과정을 정리했습니다: [docs/communication/service-communication.md](docs/communication/service-communication.md)
+
+## Spring REST + Protobuf (rest)
+
+같은 API(`/orders`)가 `Accept`, `Content-Type` 헤더에 따라 JSON과 Protobuf 바이너리를 둘 다 주고받습니다. `ProtobufHttpMessageConverter` 등록, content negotiation, Protobuf 메시지와 DTO 반환의 차이는 [docs/rest/rest.md](docs/rest/rest.md)에 있습니다.
 
 ---
 

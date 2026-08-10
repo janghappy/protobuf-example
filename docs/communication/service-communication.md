@@ -49,7 +49,7 @@ Spring은 등록된 `HttpMessageConverter`를 차례로 돌며 "이 타입을 �
 | `OrderDto` (record) | Jackson 변환기 | Jackson |
 | `Order` (Protobuf 메시지) | `ProtobufHttpMessageConverter` | JsonFormat (`application/json` 요청일 때) |
 
-`ProtobufHttpMessageConverter`를 Bean으로 등록해야 `Message` 타입을 이 변환기가 맡습니다. 등록하지 않으면 Jackson이 처리하려다 위의 문제가 생깁니다.
+`ProtobufHttpMessageConverter`를 Bean으로 등록해야 `Message` 타입을 이 변환기가 맡습니다. 등록하지 않으면 Jackson이 처리하려다 위의 문제가 생깁니다. 실제 등록과 동작은 [Spring REST + Protobuf](../rest/rest.md)에서 확인합니다.
 
 ## 바이너리는 JSON 변환기 없이 객체가 된다
 
